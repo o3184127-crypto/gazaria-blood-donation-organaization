@@ -1,0 +1,213 @@
+
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <title>All Donors | Gazaria Blood Donation Organaization</title>
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            margin:0;
+            background:#f5f5f5;
+        }
+        /* ===== Header ===== */
+        .top-bar{
+            background:#b30000;
+            color:#fff;
+            padding:8px 20px;
+            font-size:14px;
+        }
+        header{
+            background:#fff;
+            padding:15px 20px;
+            border-bottom:1px solid #ddd;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+        }
+        header h2{
+            color:#b30000;
+            margin:0;
+        }
+        nav a{
+            margin:0 10px;
+            text-decoration:none;
+            color:#333;
+            font-weight:500;
+        }
+        nav a.active{
+            color:#b30000;
+        }
+
+        /* ===== Content ===== */
+        .container{
+            padding:20px;
+        }
+        .note{
+            background:#fff;
+            padding:20px;
+            border-radius:5px;
+            margin-bottom:20px;
+        }
+        .note h3{
+            margin-top:0;
+        }
+
+        /* ===== Table ===== */
+        .table-box{
+            background:#fff;
+            padding:15px;
+            border-radius:5px;
+        }
+        .table-header{
+            display:flex;
+            justify-content:space-between;
+            margin-bottom:10px;
+        }
+        .table-header input{
+            padding:6px;
+            width:200px;
+        }
+        table{
+            width:100%;
+            border-collapse:collapse;
+        }
+        table th, table td{
+            border:1px solid #ddd;
+            padding:8px;
+            text-align:center;
+        }
+        table th{
+            background:#f2f2f2;
+        }
+        .action{
+            cursor:pointer;
+            font-size:18px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="top-bar">
+    কল সেন্টার: 01862198510
+</div>
+
+<header>
+    <h2>Gazaria blood Donation Organaization</h2>
+    <nav>
+        <a href="home.html">Home</a>
+        <a href="osman.html">Be a Donor</a>
+        <a href="search.html">Search Donors</a>
+        <a href="blog.html">Blog</a>
+        <a href="login.html">Login</a>
+    </nav>
+</header>
+
+<div class="container">
+
+    <div class="note">
+        <h3>রোগীর আত্মীয়কে বলছি:</h3>
+        <p>
+            ১) রক্তদানের পর রক্তদাতা যেন অন্ততপক্ষে আধা ঘণ্টা বিশ্রাম নিতে পারেন তার ব্যবস্থা রাখবেন। <br>
+            ২) রক্তদানের পর সম্ভব হলে ফলমূল, জুস, পানি এর ব্যবস্থা রাখবেন। <br>
+            ৩) সুস্থ হয়ে উঠার পর রক্তদাতার সাথে যোগাযোগ রাখুন।
+        </p>
+        <b>রক্ত দিন, জীবন বাঁচান 🙂</b>
+    </div>
+
+    <div class="table-box">
+        <div class="table-header">
+            <div>
+                Show
+                <select>
+                    <option>10</option>
+                    <option>25</option>
+                    <option>50</option>
+                </select>
+                entries
+            </div>
+            <div>
+                Search:
+                <input type="text" id="searchInput" onkeyup="searchTable()">
+            </div>
+        </div>
+
+        <table id="donorTable">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Blood Group</th>
+                    <th>Mobile No</th>
+                    <th>Country</th>
+                    <th>District</th>
+                    <th>Area</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>AB+</td>
+                    <td>01712333767</td>
+                    <td>Bangladesh</td>
+                    <td>Dhaka</td>
+                    <td>Nawabpur Road</td>
+                    <td class="action">👁️</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>B-</td>
+                    <td>01903600084</td>
+                    <td>Bangladesh</td>
+                    <td>Dhaka</td>
+                    <td>Mirpur</td>
+                    <td class="action">👁️</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>O-</td>
+                    <td>01717993171</td>
+                    <td>Bangladesh</td>
+                    <td>Comilla</td>
+                    <td>Comilla Sadar</td>
+                    <td class="action">👁️</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>B+</td>
+                    <td>01862198510</td>
+                    <td>Bangladesh</td>
+                    <td>Munshiganj</td>
+                    <td>Gazaria</td>
+                    <td class="action">👁️</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>B+</td>
+                    <td>01647334845</td>
+                    <td>Bangladesh</td>
+                    <td>Sonargaw</td>
+                    <td>Aldi</td>
+                    <td class="action">👁️</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<script>
+function searchTable() {
+    let input = document.getElementById("searchInput").value.toLowerCase();
+    let rows = document.querySelectorAll("#donorTable tbody tr");
+
+    rows.forEach(row => {
+        let text = row.innerText.toLowerCase();
+        row.style.display = text.includes(input) ? "" : "none";
+    });
+}
+</script>
+
+</body>
+</html>
